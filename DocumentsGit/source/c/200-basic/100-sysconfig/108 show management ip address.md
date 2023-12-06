@@ -10,7 +10,7 @@ show management ipv6 address
 ```
 
 ## Командный режим
-privileged exec
+privileged exec 
 
 ## Примеры
 ```console
