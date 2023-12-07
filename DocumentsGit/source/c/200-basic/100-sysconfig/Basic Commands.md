@@ -657,7 +657,7 @@ Privileged EXEC
 Команда reboot останавливает систему. Используйте команду reboot после ввода конфигурационной информации в файл и сохранения в файл конфигурации запуска.
 
 ### Примеры
-Вот пример диалога с командой reboot:
+Вот пример работы с командой reboot:
 ```console
 Switch# reboot
 ```
@@ -693,7 +693,7 @@ no schedule reboot
 Если вы указываете месяц и день, перезагрузка запланируется на указанное время и дату. Если не указываете месяц и день, перезагрузка произойдет в указанное время текущего дня.
 
 ### Примеры
-Приведенный ниже пример диалога с командой schedule reboot at:
+Приведенный ниже пример работы с командой schedule reboot at:
 ```console
 Switch# configure terminal
 Switch(config)# schedule reboot at 12:12 2008/12/25
@@ -772,3 +772,500 @@ Switch# boot system flash:/boot/Internal-1.0.0.25.bin
 
 ### Связанные команды
 show boot
+
+## {index}`show boot`
+
+### Назначение команды
+Для отображения текущего образа и образа, который будет загружен при следующем запуске, используйте команду show boot в режиме Privileged EXEC.
+
+### Синтаксис команды
+```
+show boot
+```
+
+### Режим команды
+Privileged EXEC
+
+### По умолчанию
+Отсутствует
+
+### Использование
+Нет
+
+### Примеры
+Ниже приведен пример вывода команды show boot:
+```console
+Switch# show boot
+
+Текущая версия загрузочного образа: E330-3.0.0.23.it
+Текущая загруженная версия: tftp://10.10.29.160/humberOS-e330-ma-v3.0.0.23.it.r.bin
+Следующая загруженная версия: tftp://10.10.29.160/humberOS-e330-ma-v3.0.0.23.it.r.bin
+```
+
+### Связанные команды
+show boot images
+
+## {index}`show boot images`
+
+### Назначение команды
+Для отображения всех имеющихся образов загрузки в системе Flash используйте команду show boot images в режиме Privileged EXEC.
+
+### Синтаксис команды
+```
+show boot images
+```
+
+### Режим команды
+Privileged EXEC
+
+### По умолчанию
+Отсутствует
+
+### Использование
+Нет
+
+### Примеры
+Ниже приведен пример вывода команды show boot images:
+```console
+Switch# show boot images
+
+Список файлов системных образов:
+Текущая версия загрузочного образа: 1.0.0.25
+    Время создания      Версия                Имя файла
+===============================================================
+* 2011-07-25 10:58:29  v3.0.0.22it            Internal-.00.22.bin
+```
+
+### Связанные команды
+show boot
+
+
+## {index}`show memory`
+
+### Назначение команды
+Для отображения информации об использовании памяти активными процессами используйте команду show memory в режиме Privileged EXEC.
+
+### Синтаксис команды
+```
+show memory ( all | bgp | bhm | chsm | dhclient | dhcpd | dhcprelay | dhcprelay6 | dot1x | imi | ipv6 | lacp | ldp | lib | mstp | nsm | oamd | onmd | ospf | pim | ptp | rip | rsvp | shal | summary )
+```
+
+| Параметр   | Описание                                          |
+|------------|---------------------------------------------------|
+| all        | Вся информация о памяти                           |
+| bgp        | Border Gateway Protocol (BGP)                      |
+| bhm        | Health monitoring                                 |
+| chsm       | Chassis management                                |
+| dhclient   | DHCP client module                                |
+| dhcpd      | DHCP                                              |
+| dhcprelay  | DHCP relay                                        |
+| dhcprelay6 | DHCP relay6(IPv6)                                 |
+| dot1x      | IEEE 802.1X Port-Based Access Control             |
+| imi        | Integrated Management Interface (IMI)              |
+| ipv6       | Internet Protocol version 6 (IPv6)                 |
+| lacp       | Link Aggregation Control Protocol (LACP)           |
+| ldp        | Label Distribution Protocol (LDP)                  |
+| lib        | Library information                               |
+| mstp       | Spanning Tree Protocols (STP/RSTP/MSTP)            |
+| nsm        | Network Service Module (NSM)                       |
+| oamd       | Bidirectional Forwarding Detection (BFD)           |
+| onmd       | LLDP and EFM_OAM                                  |
+| ospf       | Open Shortest Path First (OSPF)                    |
+| pim        | Protocol Independent Multicast (PIM)               |
+| ptp        | Precision Time Protocol (PTP)                      |
+| rip        | Routing Information Protocol (RIP)                 |
+| rsvp       | Resource Reservation Protocol (RSVP)               |
+| shal       | Hal server monitoring                             |
+| summary    | Summary memory information                        |
+| monitor    | monitor                                           |
+
+### Режим команды
+Privileged EXEC
+
+### По умолчанию
+Отсутствует
+
+### Использование
+Отображает информацию об использовании памяти различными активными процессами.
+
+### Примеры
+Вот пример вывода команды `show memory bgp`:
+```
+Library memories for BGP
+Memory type                 Alloc cells   Alloc bytes
+======================= ============= ==============
+Temporary memory             :    6596           322216
+Hash                         :      10              320
+Hash index                   :      10            40960
+Hash bucket                  :      55              880
+Link list                    :      13              400
+Link list node               :     115             1840
+Show                         :       1              512
+Show page                    :       1             8192
+Show server                  :       1               64
+Prefix IPv4                  :       6               48
+Route table                  :       6               48
+Route node                   :     309            19776
+Vector                       :    3383           324768
+Vector index                 :    3383            48824
+SNMP subtree                 :       8             6144
+Host config                  :       1               16
+Message of The Day           :       1              128
+IMI Client                   :       2             1056
+VTY master                   :       1               16
+VTY if                       :      52            39936
+VTY connected                :       3              192
+Message handler              :       2              128
+Host                         :       1               96
+Log information              :       2              128
+Context                      :       1              512
+
+Memories for BGP
+Memory type                  Alloc cells   Alloc bytes
+======================== ============= ===============
+BGP structure                :       1               768
+BGP VR structure             :       1               384
+BGP global structure         :       1                64
+BGP peer                     :       1              2048
+Ext community                :       1                16
+BGP as list master           :       1                32
+Community list handler       :       1                32
+BGP Damp Reuse List Array    :       1              2048
+BGP table                    :      31               248
+BGP VRF list                 :       1                64
+```
+### Связанные команды
+show processes memory sorted
+
+## {index}`show cpu traffic-limit` 
+
+### Назначение
+Данная команда предназначена для отображения конфигураций ограничения трафика процессора (CPU).
+
+### Синтаксис команды
+```console
+show cpu traffic-limit
+```
+
+### Режим команды
+Привилегированный режим (Privileged EXEC)
+
+### По умолчанию
+Отсутствует
+
+### Использование
+Данная команда не принимает дополнительных параметров.
+
+#### Примеры
+Пример вывода команды `show cpu traffic-limit`:
+
+```console
+Switch# show cpu traffic-limit
+
+reason                     rate (pps)   class
+bpdu                       64            3
+cfm                        512           2
+slow-protocol              128           1
+eapol                      128           0
+erps                       128           2
+smart-link                 128           2
+udld                       128           3
+arp                        640           1
+dhcp                       128           0
+rip                        64            1
+ldp                        512           1
+ospf                       256           1
+pim                        128           1
+vrrp                       512           1
+rsvp                       512           1
+ipda                       1024          0
+icmp-redirect              128           0
+mcast-rpf-fail             128           1
+macsa-mismatch             128           0
+port-security-discard      128           0
+vlan-security-discard      128           0
+mtu-dontfrag               64            0
+mtu-frag                   64            0
+ptp                        512           2
+ip-option                  512           0
+ucast-ttl-fail             64            0
+mpls-ttl-fail              64            0
+igmp                       128           2
+sflow-ingress              128           0
+sflow-egress               128           0
+fwd-to-cpu                 64            0
+mpls-tp-pwoam              128           2
+Total rate:      2048 (pps)
+```
+
+### Связанные команды
+Отсутствуют
+
+## {index}`show processes cpu sorted`
+
+### Назначение
+Команда `show processes cpu sorted` используется для отображения информации об использовании центрального процессора (CPU) для активных процессов, отсортированных по проценту использования.
+
+### Синтаксис команды
+```console
+show processes cpu sorted
+```
+
+### Режим команды
+Привилегированный режим (Privileged EXEC)
+
+### По умолчанию
+Нет значения по умолчанию.
+
+### Использование
+Данная команда показывает информацию о процессах, использующих процессор, и упорядочивает их по проценту использования CPU.
+
+#### Примеры
+Пример вывода команды `show processes cpu sorted`:
+
+```console
+Switch# show processes cpu sorted
+
+  PID     TIME %CPU TTY      COMMAND
+  924 00:20:03  2.0 ?        hsrvd
+  956 00:07:17  0.7 ?        nsm
+ 1007 00:02:44  0.2 ?        imi
+  959 00:01:24  0.1 ?        snmpd
+1317 00:00:01  0.1 pts/0    imish
+    5 00:00:45  0.0 ?        events/0
+  983 00:00:23  0.0 ?        mstpd
+  985 00:00:15  0.0 ?        onmd
+  966 00:00:15  0.0 ?        lacpd
+  963 00:00:12  0.0 ?        bhm
+  929 00:00:12  0.0 ?        chsm
+  964 00:00:11  0.0 ?        oamd
+  919 00:00:10  0.0 ?        ntpd
+1003 00:00:08  0.0 ?        pimd
+  942 00:00:08  0.0 ?        sshd
+  957 00:00:08  0.0 ?        dhcrelay
+  973 00:00:07  0.0 ?        authd
+ 1005 00:00:07  0.0 ?        ldpd
+  977 00:00:07  0.0 ?        rmond
+ 1021 00:00:07  0.0 ?        ripd
+ 1027 00:00:07  0.0 ?        ospfd
+ 1032 00:00:07  0.0 ?        bgpd
+    1 00:00:05  0.0 ?        init
+  779 00:00:04  0.0 ?        jffs2_gcd_mtd1
+1106 00:00:01  0.0 ?        imish
+    3 00:00:00  0.0 ?        ksoftirqd/0
+  916 00:00:00  0.0 ?        syslog-ng
+   65 00:00:00  0.0 ?        bdi-default
+  965 00:00:00  0.0 ?        ptpd
+  917 00:00:00  0.0 ?        crond
+   63 00:00:00  0.0 ?        sync_supers
+ 1096 00:00:00  0.0 ?        telnetd
+    6 00:00:00  0.0 ?        khelper
+  105 00:00:00  0.0 ?        khungtaskd
+    2 00:00:00  0.0 ?        kthreadd
+    4 00:00:00  0.0 ?        watchdog/0
+    9 00:00:00  0.0 ?        netns
+   10 00:00:00  0.0 ?        async/mgr
+   66 00:00:00  0.0 ?        kblockd/0
+   73 00:00:00  0.0 ?        kseriod
+   88 00:00:00  0.0 ?        rpciod/0
+  106 00:00:00  0.0 ?        kswapd0
+  157 00:00:00  0.0 ?        aio/0
+  164 00:00:00  0.0 ?        nfsiod
+  171 00:00:00  0.0 ?        crypto/0
+  712 00:00:00  0.0 ?        mtdblockd
+  741 00:00:00  0.0 ?        kpsmoused
+  789 00:00:00  0.0 ?        PETH/Tx
+  912 00:00:00  0.0 ?        angel
+ 1098 00:00:00  0.0 ?        telnetd
+ 1414 00:00:00  0.0 pts/0    imish
+ 1415 00:00:00  0.0 pts/0    more
+ 1416 00:00:00  0.0 ?        ps
+```
+
+### Связанные команды
+Отсутствуют
+
+## {index}`show processes cpu history`
+
+### Назначение
+Команда `show processes cpu history` используется для отображения информации об использовании центрального процессора (CPU) за определенный период времени, такой как 1 секунда, 1 минута, или 5 минут.
+
+### Синтаксис команды
+```console
+show processes cpu history
+```
+
+### Режим команды
+Привилегированный режим (Privileged EXEC)
+
+### По умолчанию
+Отсутствует
+
+### Использование
+Данная команда не принимает дополнительных параметров. Отображает процент использования CPU за последние пять секунд, одну минуту и пять минут.
+
+#### Примеры
+Пример вывода команды `show processes cpu history`:
+
+```console
+Switch# show processes cpu history
+
+CPU usage for five seconds: 4.17%; one minute: 3.70%; five minutes: 3.68%
+```
+
+### Связанные команды
+Отсутствуют
+
+## {index}`show processes memory sorted`
+
+### Назначение
+Команда `show processes memory sorted` используется для отображения информации об использовании памяти активными процессами, отсортированной по проценту использования в устройстве.
+
+### Синтаксис команды
+```console
+show processes memory sorted (core | physical | virtual)
+```
+| Параметр | Описание параметра                                      | Значение параметра |
+|----------|---------------------------------------------------------|-------------------|
+| core     | Размер в физических страницах основного образа процесса | -                 |
+| physical | Неиспользуемая физическая память, которую задача использует | -                 |
+| virtual  | Использование виртуальной памяти всем процессом          | -                 |
+
+### Режим команды
+Привилегированный режим (Privileged EXEC)
+
+### По умолчанию
+Отсутствует
+
+### Использование
+Данная команда показывает информацию об использовании памяти процессами, отсортированными по проценту использования. Можно указать тип памяти (ядро, физическая, виртуальная), по которой будет производиться сортировка.
+
+### Примеры
+Пример вывода команды `show processes memory sorted` без ключевых слов:
+
+```console
+Switch# show processes memory sorted
+
+Total: 256108; Used: 89644; Free: 166464; Buffers: 0
+  PID TTY      RSS    VSZ    SZ COMMAND
+1317 pts/0     9516  13104  3276 imish
+1106 ?         9428  13104  3276 imish
+1463 pts/0     7436  13104  3276 imish
+  956 ?         6836  14644  3661 nsm
+  1007 ?         5948   9624  2406 imi
+  924 ?         5912  17652  4413 hsrvd
+  959 ?         3336   8076  2019 snmpd
+  1032 ?         2724   8204  2051 bgpd
+  1027 ?         2488   7140  1785 ospfd
+  1003 ?         2472   7152  1788 pimd
+  957 ?         2340   6572  1643 dhcrelay
+  983 ?         2336   6592  1648 mstpd
+  1021 ?         2324   6600  1650 ripd
+  1005 ?         2320   6732  1683 ldpd
+  942 ?         2284   6772  1693 sshd
+  985 ?         2208   6592  1648 onmd
+  929 ?         2132   7168  1792 chsm
+  966 ?         2028   6140  1535 lacpd
+  973 ?         2028   6284  1571 authd
+  965 ?         2024   6408  1602 ptpd
+  964 ?         1952   6364  1591 oamd
+  977 ?         1948   6200  1550 rmond
+  963 ?         1708   5980  1495 bhm
+  919 ?         1120   3792   948 ntpd
+  916 ?         1060   2300   575 syslog-ng
+1465 pts/0      764   2516   629 ps
+  917 ?          668   3040   760 crond
+    1 ?          656   2928   732 init
+1464 pts/0      472   1668   417 more
+  1096 ?          416   2928   732 telnetd
+  1098 ?          272   2928   732 telnetd
+  912 ?          172   1496   374 angel
+    2 ?            0      0     0 kthreadd
+    3 ?            0      0     0 ksoftirqd/0
+    4 ?            0      0     0 watchdog/0
+    5 ?            0      0     0 events/0
+    6 ?            0      0     0 khelper
+    9 ?            0      0     0 netns
+   10 ?            0      0     0 async/mgr
+   63 ?            0      0     0 sync_supers
+   65 ?            0      0     0 bdi-default
+   66 ?            0      0     0 kblockd/0
+   73 ?            0      0     0 kseriod
+   88 ?            0      0     0 rpciod/0
+  105 ?            0      0     0 khungtaskd
+  106 ?            0      0     0 kswapd0
+  157 ?            0      0     0 aio/0
+  164 ?            0      0     0 nfsiod
+  171 ?            0      0     0 crypto/0
+  712 ?            0      0     0 mtdblockd
+  741 ?            0      0     0 kpsmoused
+  779 ?            0      0     0 jffs2_gcd_mtd1
+  789 ?            0      0     0 PETH/Tx
+```
+
+### Связанные команды
+Отсутствуют
+
+## Команда `terminal monitor`
+
+### Назначение
+Команда `terminal monitor` используется в привилегированном режиме для копирования отладочного вывода на текущую линию терминала.
+
+### Синтаксис команды
+```console
+terminal monitor
+terminal no monitor
+```
+
+### Режим команды
+Привилегированный режим (Privileged EXEC)
+
+### По умолчанию
+Отсутствует
+
+### Использование
+Отсутствует
+
+### Примеры
+Пример вывода команды `terminal monitor`:
+```console
+Switch# terminal monitor
+
+Jan  1 16:09:30 DUT1 IMISH-6: ready to service
+```
+
+### Связанные команды
+Отсутствуют
+
+## Команда `configure terminal`
+
+### Назначение
+Команда `configure terminal` используется в привилегированном режиме для входа в режим глобальной конфигурации.
+
+### Синтаксис команды
+```console
+configure terminal
+```
+
+### Режим команды
+Привилегированный режим (Privileged EXEC)
+
+### По умолчанию
+Отсутствует
+
+### Использование
+Эта команда используется для входа в режим глобальной конфигурации. Обратите внимание, что команды в этом режиме записываются в файл текущей конфигурации сразу после их ввода (с использованием клавиши Enter/Carriage Return). После ввода команды `configure`, приглашение системы меняется с # на (config)#, указывая на то, что устройство находится в режиме глобальной конфигурации. Для выхода из режима глобальной конфигурации и возврата в привилегированный режим EXEC введите `end` или нажмите Ctrl+Z.
+
+### Примеры
+В следующем примере пользователь входит в режим глобальной конфигурации:
+```console
+Switch# configure terminal
+Switch(config)#
+
+Enter configuration commands, one per line. End with CNTL/Z.
+Switch(config)#
+```
+
+### Связанные команды
+- `enable`
+- `disable`
